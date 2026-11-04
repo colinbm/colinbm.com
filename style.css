@@ -85,6 +85,7 @@ a { color: var(--link); text-underline-offset: 0.18em; }
 .icons img:nth-child(3) { transform: rotate(-2deg); }
 .icons img:nth-child(4) { transform: rotate(5deg) translateY(-2px); }
 .icons img:nth-child(5) { transform: rotate(-4deg) translateY(1px); }
+.icons img:nth-child(6) { transform: rotate(3deg) translateY(-1px); }
 .icons:hover img { transform: none; }
 .icons:hover img + img { margin-left: 6px; }
 .icons img { transition-property: transform, margin-left; }
@@ -323,6 +324,13 @@ h1 {
   --card-2: #7a3a46;
   --accent: #ffc7b3;
   --wash: radial-gradient(22rem 16rem at 85% 100%, rgba(255, 138, 149, 0.3), transparent 70%);
+}
+
+.app--bowlful {
+  --card: #6b2e0e;
+  --card-2: #b8531d;
+  --accent: #ffd29a;
+  --wash: radial-gradient(22rem 16rem at 85% 100%, rgba(255, 180, 92, 0.35), transparent 70%);
 }
 
 /* Footer */
