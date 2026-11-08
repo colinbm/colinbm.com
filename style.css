@@ -304,6 +304,54 @@ h1 {
   --wash: radial-gradient(22rem 16rem at 85% 100%, rgba(159, 240, 200, 0.18), transparent 70%);
 }
 
+.app--voterempathy[data-variant="scotland"] {
+  --card: #2e0b4a;
+  --card-2: #6a2a98;
+  --accent: #dcc2f0;
+  --wash: radial-gradient(22rem 16rem at 85% 100%, rgba(201, 165, 224, 0.25), transparent 70%);
+}
+
+/* Show only the chosen variant of a card */
+.app[data-variant="uk"] [data-for="scotland"],
+.app[data-variant="scotland"] [data-for="uk"] { display: none; }
+
+.app [data-for] { animation: variant-in 0.3s ease-out; }
+
+@keyframes variant-in {
+  from { opacity: 0; }
+}
+
+.flags {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.flags a {
+  display: block;
+  border-radius: 3px;
+  opacity: 0.55;
+  transition: opacity 0.2s, box-shadow 0.2s;
+}
+
+.flags a:hover { opacity: 1; }
+
+.flags a[aria-current] {
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--ink);
+}
+
+.flags img {
+  display: block;
+  height: 18px;
+  width: auto;
+  border-radius: 2px;
+}
+
 .app--bacon {
   --card: #4b2c2c;
   --card-2: #7a3a46;
@@ -343,5 +391,5 @@ footer a { color: var(--muted); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }

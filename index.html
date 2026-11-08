@@ -62,14 +62,25 @@
           </div>
           <div class="phone"><img src="assets/screens/terranota.jpg" alt="Terra Nota showing a live position on a historic map of London" width="480" height="1043" loading="lazy"></div>
         </li>
-        <li class="app app--voterempathy">
-          <div class="copy">
+        <li class="app app--voterempathy" data-variant="uk">
+          <nav class="flags" aria-label="Choose a parliament">
+            <a href="https://voterempathy.org.uk" data-variant="uk" aria-current="true" title="UK Parliament: Voter Empathy" aria-label="UK Parliament: Voter Empathy"><img src="assets/flags/uk.svg" alt="" width="30" height="15"></a>
+            <a href="https://scotland.voterempathy.org.uk" data-variant="scotland" title="Scottish Parliament: Voter Empathy Scotland" aria-label="Scottish Parliament: Voter Empathy Scotland"><img src="assets/flags/scotland.svg" alt="" width="25" height="15"></a>
+          </nav>
+          <div class="copy" data-for="uk">
             <img class="icon" src="assets/voterempathy.png" alt="" width="64" height="64">
             <h3><a href="https://voterempathy.org.uk">Voter Empathy</a></h3>
             <p class="tagline">House of Commons votes, on your phone.</p>
             <p class="meta"><a class="pill pill--link" href="https://testflight.apple.com/join/pHFMNh2m">Public beta on TestFlight <span aria-hidden="true">→</span></a> iPhone, with Android coming soon</p>
           </div>
-          <div class="phone"><img src="assets/screens/voterempathy.jpg" alt="Voter Empathy’s Vote screen explaining a second reading" width="480" height="1043" loading="lazy"></div>
+          <div class="phone" data-for="uk"><img src="assets/screens/voterempathy.jpg" alt="Voter Empathy’s Vote screen explaining a second reading" width="480" height="1043" loading="lazy"></div>
+          <div class="copy" data-for="scotland">
+            <img class="icon" src="assets/voterempathy-scotland.png" alt="" width="64" height="64">
+            <h3><a href="https://scotland.voterempathy.org.uk">Voter Empathy Scotland</a></h3>
+            <p class="tagline">Scottish Parliament votes, on your phone.</p>
+            <p class="meta"><span class="pill">Coming soon</span> iPhone and Android</p>
+          </div>
+          <div class="phone" data-for="scotland"><img src="assets/screens/voterempathy-scotland.jpg" alt="Voter Empathy Scotland’s Vote screen explaining a debate motion" width="480" height="1043" loading="lazy"></div>
         </li>
         <li class="app app--bacon">
           <div class="copy">
@@ -99,5 +110,19 @@
       <p><a href="https://github.com/colinbm">GitHub</a></p>
     </div>
   </footer>
+  <script>
+    // Flag switcher: swap a card between its variants instead of leaving the page
+    document.querySelectorAll(".flags a").forEach(function (flag) {
+      flag.addEventListener("click", function (event) {
+        event.preventDefault();
+        var card = flag.closest(".app");
+        card.dataset.variant = flag.dataset.variant;
+        card.querySelectorAll(".flags a").forEach(function (other) {
+          if (other === flag) other.setAttribute("aria-current", "true");
+          else other.removeAttribute("aria-current");
+        });
+      });
+    });
+  </script>
 </body>
 </html>
