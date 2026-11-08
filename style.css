@@ -311,9 +311,18 @@ h1 {
   --wash: radial-gradient(22rem 16rem at 85% 100%, rgba(201, 165, 224, 0.25), transparent 70%);
 }
 
-/* Show only the chosen variant of a card */
+/* Stack a card's variants in one cell so it keeps the height of the tallest */
+.app:has(.variant) { display: grid; }
+
+.variant {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Show only the chosen variant */
 .app[data-variant="uk"] [data-for="scotland"],
-.app[data-variant="scotland"] [data-for="uk"] { display: none; }
+.app[data-variant="scotland"] [data-for="uk"] { visibility: hidden; }
 
 .app [data-for] { animation: variant-in 0.3s ease-out; }
 
